@@ -1,0 +1,38 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "description": "RSS agregator",
+  "main": "src/init.js",
+  "type": "module",
+  "scripts": {
+    "dev": "npx webpack serve",
+    "test": "npx jest",
+    "build": "NODE_ENV=production webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kalynov/frontend-project-11.git"
+  },
+  "author": "Artem KAlynov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kalynov/frontend-project-11/issues"
+  },
+  "homepage": "https://github.com/Kalynov/frontend-project-11#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "css-loader": "^7.1.2",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.6.0",
+    "mini-css-extract-plugin": "^2.9.0",
+    "postcss-loader": "^8.1.1",
+    "sass": "^1.77.8",
+    "sass-loader": "^14.2.1",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.93.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
+  }
+}
