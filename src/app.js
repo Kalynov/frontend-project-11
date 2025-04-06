@@ -8,16 +8,7 @@ import { i18n } from "./i18n.js";
 import { Posts } from "./posts/posts.js";
 import { Feeds } from "./feeds/feeds.js";
 import { parseXml } from "./utils.js";
-
-async function fetchRSS(url) {
-    const response = await fetch(`https://allorigins.hexlet.app/get?url=${encodeURIComponent(url)}&disableCache=true`);
-    if (!response.ok) {
-        throw new Error(getError(TYPES.responceError));
-    }
-    const text = await response.text();
-    
-    return text
-}
+import { fetchRSS } from "./api.js";
 
 
 export class App {
@@ -41,27 +32,47 @@ export class App {
         this.form.formEl.addEventListener('submit', handler)
     }
 
-
-    async onSubmit(e) {
-        e.preventDefault();
-        try {
-            const value = this.form.inputEl.value;
-            const {url} = await this.schema.validate({url: value})
-            this.clearErrors();
-            if (this.state.urls.includes(url)) {
-                throw new Error(getError(TYPES.dublicate))  
-            }
-            this.addUrl(url)
-            this.form.clearInput();
-            const data = await fetchRSS(url);
-            const content = JSON.parse(data).contents;
-            const {feed, posts} = parseXml(content);
-            this.wathedState.posts.push(...posts);
-            this.wathedState.feeds.push(feed);
-        } catch(err)  {
-            this.wathedState.errors.input = err.message;
-            console.log(err)
+    pollingPosts() {
+        this.feeds.getAllPosts()
+            .then((posts) => {
+                this.posts.addPosts(posts);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+        setTimeout(() => {
+            this.pollingPosts();
         }
+        , 5000);
+     }
+
+
+    onSubmit(e) {
+        e.preventDefault();
+        const value = this.form.inputEl.value;
+        this.schema.validate({url: value})
+            .then(({url}) => {
+                this.clearErrors();
+                if (this.wathedState.urls.includes(url)) {
+                    throw new Error(getError(TYPES.dublicate)) 
+                }
+                this.addUrl(url)
+                this.form.clearInput();
+                return fetchRSS(url);
+            })
+            .then((data) => {
+                const {contents, status} = JSON.parse(data);
+                const {feed, posts} = parseXml(contents);
+                this.wathedState.posts.push(...posts);
+                this.feeds.addFeed({...feed, url: status.url});
+                if (this.wathedState.feeds.length === 1) {
+                    this.pollingPosts();
+                }
+            })
+            .catch(err =>{
+                this.wathedState.errors.input = err.message;
+                console.log(err)
+            })
         
     }
 

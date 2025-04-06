@@ -8,7 +8,11 @@ export class Post {
     }
 
     render(container) {
+        if (container.querySelector(`#uid-${this.uuid}`)) {
+            return;
+          }
         const post = document.createElement('li');
+        post.id = `uid-${this.uuid}`;
         post.classList.add('post');
         const href = document.createElement('a');
         href.classList.add('post-title');

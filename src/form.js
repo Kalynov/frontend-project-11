@@ -12,7 +12,6 @@ export class Form {
     }
 
     render(state) {
-        console.log(state, "RENDER FORM");
         this.errorEl.innerText = state.errors?.input || ''
         this.submitButton.innerText = i18n.t('form.submit');
         this.inputEl.placeholder = i18n.t('form.placeholder');
