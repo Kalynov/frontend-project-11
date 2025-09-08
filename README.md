@@ -1,15 +1,16 @@
 # "RSS Loader" Project
 
-[![Actions Status](https://github.com/DeIndi/frontend-project-11/workflows/hexlet-check/badge.svg)](https://github.com/DeIndi/frontend-project-11/actions)
-[![node CI](https://github.com/DeIndi/frontend-project-11/actions/workflows/nodeCI.yml/badge.svg)](https://github.com/DeIndi/frontend-project-11/actions/workflows/nodeCI.yml)
-[![Maintainability](https://api.codeclimate.com/v1/badges/27ff25bb731f8ca6695f/maintainability)](https://codeclimate.com/github/DeIndi/frontend-project-11/maintainability)
+[![Actions Status](https://github.com/Kalynov/frontend-project-11/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Kalynov/frontend-project-11/actions)
+
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/55b8e6b65acea195071f/maintainability)](https://codeclimate.com/github/Kalynov/frontend-project-11/maintainability)
 
 Third frontend project out of four.
 Program loads one or several RSS feeds, validates the link, and displays the content in the posts section.
 It also shows active feeds in the feeds section.
 
 Vercel link:
-https://frontend-project-11-deindi.vercel.app/
+https://frontend-project-11-gules-six.vercel.app/
 
 ## Requirements
 
@@ -21,7 +22,7 @@ https://frontend-project-11-deindi.vercel.app/
 
 To install this project, use following commands:
 ```bash
-git clone https://github.com/DeIndi/frontend-project-11
+git clone https://github.com/Kalynov/frontend-project-11
 cd frontend-project-11
 make install
 ```
