@@ -5,6 +5,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'; // eslint-disable-line import/no-extraneous-dependencies
+import sass from 'sass';
 
 // eslint-disable-next-line no-underscore-dangle
 const __filename = fileURLToPath(import.meta.url);
@@ -51,6 +52,12 @@ const config = {
           MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader',
+          {
+            loader: "sass-loader",
+            options: {
+              implementation: sass, // используем Dart Sass
+            },
+          },
         ],
       },
     ],

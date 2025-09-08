@@ -1,5 +1,5 @@
+import sanitize from 'dompurify';
 import onChange from 'on-change';
-import { sanitize } from 'dompurify';
 
 const removeClassStartsWith = (node, classNamePrefix) => {
   [...node.classList].forEach((className) => {
@@ -61,21 +61,23 @@ const renderFeeds = (state, i18Instance) => {
   if (state.feeds.length <= 0) {
     return null;
   }
+  const title = i18Instance.t('feeds');
+  console.log(title);
   return (`
     <div class="card border-0">
       <div class="card-body">
         <h2 class="card-title h4">
-          ${sanitize(i18Instance.t('feeds'))}
+          ${title}
         </h2>
       </div>
       <ul class="list-group border-0 rounded-0">
         ${state.feeds.map(({ title, desc }) => `
           <li class="list-group-item border-0 border-end-0">
             <h3 class="h6 m-0">
-              ${sanitize(title)}
+              ${title}
             </h3>
             <p class="m-0 small text-black-50">
-              ${sanitize(desc)}
+              ${desc}
             </p>
           </li>
         `).join('')}
