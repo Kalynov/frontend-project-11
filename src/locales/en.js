@@ -1,24 +1,23 @@
 export default {
-    translation: {
-        "loading": {
-          "success": 'Rss has been loaded',
-        },
-        "errors": {
-          "exists": 'Rss already exists',
-          "required": 'Required',
-          "notUrl": 'Must be valid url',
-          "noRss": 'This source doesn\'t contain valid rss',
-          "network": 'Network error',
-          "unknown": 'Something went wrong',
-        },
-        "form": {
-          "submit": 'Add',
-          "placeholder": 'RSS link',
-        },
-        "feeds": 'Feeds',
-        "posts": 'Posts',
-        "preview": 'Preview',
-        "title": 'RSS aggregator',
-        "description": 'Start reading RSS today! It is easy, it is nicely.',
-    },    
-}
+  translation: {
+    english: 'English',
+    russian: 'Русский',
+    rss: 'RSS',
+    add: 'Add',
+    feeds: 'Feeds',
+    posts: 'Posts',
+    announcement: "Start reading RSS today! It's easy, it's nice.",
+    rssAggregator: 'RSS Aggregator',
+    rssLoadingSuccess: 'RSS loaded successfully',
+    view: 'View',
+    fullArticle: 'Read full article',
+    errors: {
+      errorDefault: 'Неизвестная ошибка',
+      validationError_exists: 'RSS already exists',
+      validationError_required: 'Should not be empty',
+      errorNetwork: 'Network error',
+      validationError_url: 'Link must be a valid URL',
+      errorNoValidRss: 'Resource does not contain valid RSS',
+    },
+  },
+};

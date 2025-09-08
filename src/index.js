@@ -1,7 +1,4 @@
-import 'bootstrap';
-import './app.scss';
-import { init } from './init.js';
+import './index.scss';
+import main from './init.js';
 
-
-console.log('wooork')
-init();
+main();

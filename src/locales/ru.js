@@ -1,26 +1,23 @@
 export default {
   translation: {
-      "loading": {
-        "success": 'RSS успешно загружен',
-      },
-      "errors": {
-        "exists": 'RSS уже существует',
-        "required": 'Не должно быть пустым',
-        "notUrl": 'Ссылка должна быть валидным URL',
-        "noRss": 'Ресурс не содержит валидный RSS',
-        "network": 'Ошибка сети',
-        "unknown": 'Неизвестная ошибка. Что-то пошло не так.',
-      },
-      "form": {
-        "submit": 'Добавить',
-        "placeholder": 'Ссылка на RSS',
-      },
-      "feeds": 'Фиды',
-      "posts": 'Посты',
-      "preview": 'Просмотр',
-      "title": 'RSS агрегатор',
-      "description": 'Начните читать RSS сегодня! Это легко, это красиво.',
+    english: 'English',
+    russian: 'Русский',
+    rss: 'RSS',
+    add: 'Добавить',
+    feeds: 'Фиды',
+    posts: 'Посты',
+    announcement: 'Начните читать RSS сегодня! Это легко, это красиво.',
+    rssAggregator: 'RSS агрегатор',
+    rssLoadingSuccess: 'RSS успешно загружен',
+    view: 'Просмотр',
+    fullArticle: 'Читать полностью',
+    errors: {
+      errorDefault: 'Unknown error',
+      validationError_exists: 'RSS уже существует',
+      validationError_required: 'Не должно быть пустым',
+      errorNetwork: 'Ошибка сети',
+      validationError_url: 'Ссылка должна быть валидным URL',
+      errorNoValidRss: 'Ресурс не содержит валидный RSS',
     },
-  };
-  
-  
+  },
+};
