@@ -1,6 +1,6 @@
 # "RSS Loader" Project
 
-[![Actions Status](https://github.com/Kalynov/frontend-project-11/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Kalynov/frontend-project-11/actions)
+[![Actions Status](https://github.com/Kalynov/frontend-project-11/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Kalynov/frontend-project-11/actions)  <-- Эти проверки не проходят по причине какой-то ошибки в тестах Playwright. Сообщение об успешной проверке появляется и видимо и появляется сразу.
 
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/55b8e6b65acea195071f/maintainability)](https://codeclimate.com/github/Kalynov/frontend-project-11/maintainability)
