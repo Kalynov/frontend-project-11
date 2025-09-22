@@ -7,7 +7,7 @@ import resources from './locales/locale.js';
 import watch from './view.js';
 
 const networkErrorCodes = ['ECONNABORTED', 'ENOTFOUND', 'EAI_AGAIN', 'ERR_NETWORK'];
-const proxyServer = 'https://allorigins.hexlet.app/';
+const proxyServer = 'https://allorigins.hexlet.app/get';
 const updateTimeout = 5000;
 
 const validate = (url, feeds) => {
@@ -17,7 +17,12 @@ const validate = (url, feeds) => {
     .validate(url, { abortEarly: false });
 };
 
-const proxifyLink = (link) => new URL(`${proxyServer}get?url=${encodeURIComponent(link)}&disableCache=true`);
+const proxifyLink = (link) => {
+  const linkUrl = new URL(proxyServer);
+  linkUrl.searchParams.set('url', link);
+  linkUrl.searchParams.set('disableCache', 'true');
+  return linkUrl
+}
 
 const parseRss = (data) => {
   const parser = new DOMParser();
