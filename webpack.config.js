@@ -55,6 +55,9 @@ const config = {
           {
             loader: "sass-loader",
             options: {
+              sassOptions: {
+                quietDeps: true, // Скрыть все предупреждения, приходящие из node_modules
+              },
               implementation: sass, // используем Dart Sass
             },
           },
