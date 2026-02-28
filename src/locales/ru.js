@@ -20,4 +20,4 @@ export default {
       errorNoValidRss: 'Ресурс не содержит валидный RSS',
     },
   },
-};
+}

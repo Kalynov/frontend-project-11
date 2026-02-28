@@ -1,20 +1,20 @@
-import sanitize from 'dompurify';
-import onChange from 'on-change';
+import sanitize from 'dompurify'
+import onChange from 'on-change'
 
 const removeClassStartsWith = (node, classNamePrefix) => {
   [...node.classList].forEach((className) => {
     if (className.startsWith(classNamePrefix)) {
-      node.classList.remove(className);
+      node.classList.remove(className)
     }
-  });
-};
+  })
+}
 
 const renderFeedback = (elements, feedbackType, message) => {
-  const { feedbackMessage } = elements;
-  removeClassStartsWith(feedbackMessage, 'text-');
-  feedbackMessage.textContent = message;
-  feedbackMessage.classList.add(`text-${feedbackType}`);
-};
+  const { feedbackMessage } = elements
+  removeClassStartsWith(feedbackMessage, 'text-')
+  feedbackMessage.textContent = message
+  feedbackMessage.classList.add(`text-${feedbackType}`)
+}
 
 const renderPost = (state, i18Instance, { title, postId, postLink }) => `
   <li class="list-group-item post-item d-flex justify-content-between align-items-start border-0 border-end-0">
@@ -37,11 +37,11 @@ const renderPost = (state, i18Instance, { title, postId, postLink }) => `
       ${i18Instance.t('view')}
     </button>
   </li>
-`;
+`
 
 const renderPosts = (state, i18Instance) => {
   if (state.posts.length <= 0) {
-    return null;
+    return null
   }
   return (`
     <div class="card border-0">
@@ -51,18 +51,18 @@ const renderPosts = (state, i18Instance) => {
         </h2>
       </div>
       <ul class="list-group border-0 rounded-0">
-        ${state.posts.map((post) => renderPost(state, i18Instance, post)).join('')}
+        ${state.posts.map(post => renderPost(state, i18Instance, post)).join('')}
       </ul>
     </div>
-  `);
-};
+  `)
+}
 
 const renderFeeds = (state, i18Instance) => {
   if (state.feeds.length <= 0) {
-    return null;
+    return null
   }
-  const title = i18Instance.t('feeds');
-  console.log(title);
+  const title = i18Instance.t('feeds')
+  console.log(title)
   return (`
     <div class="card border-0">
       <div class="card-body">
@@ -83,82 +83,83 @@ const renderFeeds = (state, i18Instance) => {
         `).join('')}
       </ul>
     </div>
-  `);
-};
+  `)
+}
 
 const handleForm = (state, elements, i18Instance) => {
-  const { isValid } = state.form;
+  const { isValid } = state.form
   if (isValid) {
-    elements.formInput.classList.remove('is-invalid');
-  } else {
-    elements.formInput.classList.add('is-invalid');
-    renderFeedback(elements, 'danger', i18Instance.t(`errors.${state.form.error}`));
+    elements.formInput.classList.remove('is-invalid')
   }
-};
+  else {
+    elements.formInput.classList.add('is-invalid')
+    renderFeedback(elements, 'danger', i18Instance.t(`errors.${state.form.error}`))
+  }
+}
 
 const handleLoadingProcess = (state, elements, i18Instance) => {
   switch (state.loadingProcess.status) {
     case 'idle':
-      elements.formInput.value = '';
-      elements.formSubmit.disabled = false;
-      break;
+      elements.formInput.value = ''
+      elements.formSubmit.disabled = false
+      break
     case 'success':
-      renderFeedback(elements, 'success', i18Instance.t('rssLoadingSuccess'));
-      elements.formInput.focus();
-      elements.formSubmit.disabled = false;
-      break;
+      renderFeedback(elements, 'success', i18Instance.t('rssLoadingSuccess'))
+      elements.formInput.focus()
+      elements.formSubmit.disabled = false
+      break
     case 'fail':
-      renderFeedback(elements, 'danger', i18Instance.t(`errors.${state.loadingProcess.error}`));
-      elements.formSubmit.disabled = false;
-      break;
+      renderFeedback(elements, 'danger', i18Instance.t(`errors.${state.loadingProcess.error}`))
+      elements.formSubmit.disabled = false
+      break
     case 'loading':
-      renderFeedback(elements, '', '');
-      elements.formSubmit.disabled = true;
-      break;
+      renderFeedback(elements, '', '')
+      elements.formSubmit.disabled = true
+      break
     default:
-      break;
+      break
   }
-};
+}
 
 const handleModal = (state, elements, i18Instance) => {
-  const activePost = state.posts.find((post) => post.postId === state.modal.activePostId);
+  const activePost = state.posts.find(post => post.postId === state.modal.activePostId)
   if (!activePost) {
-    return null;
+    return null
   }
-  const { title, description, postLink } = activePost;
-  elements.modalHeader.innerText = title;
-  elements.modalBody.innerText = description;
-  elements.fullArticle.href = postLink;
-  elements.fullArticle.innerText = i18Instance.t('fullArticle');
-  return null;
-};
+  const { title, description, postLink } = activePost
+  elements.modalHeader.innerText = title
+  elements.modalBody.innerText = description
+  elements.fullArticle.href = postLink
+  elements.fullArticle.innerText = i18Instance.t('fullArticle')
+  return null
+}
 
 const handleFeedsSection = (state, elements, i18Instance) => {
-  elements.feeds.innerHTML = renderFeeds(state, i18Instance);
-};
+  elements.feeds.innerHTML = renderFeeds(state, i18Instance)
+}
 
 const handlePostsSection = (state, elements, i18Instance) => {
-  elements.posts.innerHTML = renderPosts(state, i18Instance);
-};
+  elements.posts.innerHTML = renderPosts(state, i18Instance)
+}
 
 const dispatch = (state, i18Instance, elements, path = '') => {
   if (path.startsWith('loadingProcess')) {
-    handleLoadingProcess(state, elements, i18Instance);
+    handleLoadingProcess(state, elements, i18Instance)
   }
   if (path.startsWith('form')) {
-    handleForm(state, elements, i18Instance);
+    handleForm(state, elements, i18Instance)
   }
   if (path.startsWith('feeds')) {
-    handleFeedsSection(state, elements, i18Instance);
+    handleFeedsSection(state, elements, i18Instance)
   }
   if (path.startsWith('posts') || path.startsWith('uiState')) {
-    handlePostsSection(state, elements, i18Instance);
+    handlePostsSection(state, elements, i18Instance)
   }
   if (path.startsWith('modal')) {
-    handleModal(state, elements, i18Instance);
+    handleModal(state, elements, i18Instance)
   }
-};
+}
 
 export default (state, i18Instance, elements) => onChange(state, (path) => {
-  dispatch(state, i18Instance, elements, path);
-});
+  dispatch(state, i18Instance, elements, path)
+})

@@ -157,8 +157,8 @@ test.describe('load feeds', () => {
 
     await expect(page.locator('text=Новые уроки на Хекслете', {})).toBeVisible()
     await expect(page.locator('text=Практические уроки по программированию', {})).toBeVisible()
-    await expect(page.locator('text=Агрегация \/ Python: Деревья', {})).toBeVisible()
-    await expect(page.locator('text=Traversal \/ Python: Деревья', {})).toBeVisible()
+    await expect(page.locator('text=Агрегация / Python: Деревья', {})).toBeVisible()
+    await expect(page.locator('text=Traversal / Python: Деревья', {})).toBeVisible()
   })
 })
 
@@ -168,8 +168,8 @@ test('modal', async ({ page }) => {
   await page.locator('input[aria-label="url"]').type(rssUrl)
   await page.locator('button[type="submit"]').click()
 
-  const postTitle = await page.locator('a:text("Агрегация \/ Python: Деревья")', {})
-  const btn = await page.locator('a:text("Агрегация \/ Python: Деревья") + :text("Просмотр")')
+  const postTitle = await page.locator('a:text("Агрегация / Python: Деревья")', {})
+  const btn = await page.locator('a:text("Агрегация / Python: Деревья") + :text("Просмотр")')
 
   await expect(postTitle).toHaveClass('fw-bold')
   await btn.click()

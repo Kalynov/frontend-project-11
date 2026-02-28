@@ -1,16 +1,12 @@
-// Generated using webpack-cli https://github.com/webpack/webpack-cli
+import path from 'path'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import { dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import sass from 'sass'
 
-import path from 'path';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin'; // eslint-disable-line import/no-extraneous-dependencies
-import sass from 'sass';
-
-// eslint-disable-next-line no-underscore-dangle
-const __filename = fileURLToPath(import.meta.url);
-// eslint-disable-next-line no-underscore-dangle
-const __dirname = dirname(__filename);
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 const config = {
   entry: './src/index.js',
@@ -53,12 +49,12 @@ const config = {
           'css-loader',
           'sass-loader',
           {
-            loader: "sass-loader",
+            loader: 'sass-loader',
             options: {
               sassOptions: {
-                quietDeps: true, // Скрыть все предупреждения, приходящие из node_modules
+                quietDeps: true,
               },
-              implementation: sass, // используем Dart Sass
+              implementation: sass,
             },
           },
         ],
@@ -70,6 +66,6 @@ const config = {
     maxEntrypointSize: 512000,
     maxAssetSize: 512000,
   },
-};
+}
 
-export default () => config;
+export default () => config

@@ -1,4 +1,4 @@
-import './index.scss';
-import main from './init.js';
+import './index.scss'
+import main from './init.js'
 
-main();
+main()

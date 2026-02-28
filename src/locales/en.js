@@ -6,7 +6,7 @@ export default {
     add: 'Add',
     feeds: 'Feeds',
     posts: 'Posts',
-    announcement: "Start reading RSS today! It's easy, it's nice.",
+    announcement: 'Start reading RSS today! It\'s easy, it\'s nice.',
     rssAggregator: 'RSS Aggregator',
     rssLoadingSuccess: 'RSS loaded successfully',
     view: 'View',
@@ -20,4 +20,4 @@ export default {
       errorNoValidRss: 'Resource does not contain valid RSS',
     },
   },
-};
+}
