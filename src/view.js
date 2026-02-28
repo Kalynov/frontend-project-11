@@ -20,7 +20,7 @@ const renderPost = (state, i18Instance, { title, postId, postLink }) => `
   <li class="list-group-item post-item d-flex justify-content-between align-items-start border-0 border-end-0">
     <a
       href="${sanitize(postLink)}"
-      class="link-secondary${state.uiState.viewedPosts.has(postId) ? 'fw-normal' : 'fw-bold'}"
+      class="link-secondary ${state.uiState.viewedPosts.has(postId) ? 'fw-normal' : 'fw-bold'}"
       data-id="${postId}"
       target="_blank"
       rel="noopener noreferrer"
