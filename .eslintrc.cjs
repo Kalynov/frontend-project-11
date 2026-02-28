@@ -22,9 +22,9 @@ module.exports = {
   rules: {
     'no-console': 'off',
     'import/extensions': 'off',
-    semi: ['error', 'never'],
+    'semi': ['error', 'never'],
     'arrow-parens': ['error', 'as-needed', { requireForBlockBody: true }],
-    quotes: ['error', 'single'],
+    'quotes': ['error', 'single'],
     'brace-style': ['error', 'stroustrup'],
     'no-param-reassign': ['error', { props: false }],
     'no-underscore-dangle': 'off',
